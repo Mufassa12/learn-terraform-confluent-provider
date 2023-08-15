@@ -143,6 +143,8 @@ resource "confluent_kafka_topic" "orders" {
 
 
 
-
+data "hcp_vault_secrets_app" "example" {
+  app_name = "confluent-meetup"
+}
 
 
