@@ -1,5 +1,6 @@
 terraform {
   cloud {
+    organization = "hcpco"
     workspaces {
       name = "learn-terraform-confluent-provider"
     }
@@ -11,5 +12,5 @@ terraform {
       version = "1.1.0"
     }
   }
-  required_version = "~> 1.2.0"
+  // required_version = "~> 1.2.0"
 }

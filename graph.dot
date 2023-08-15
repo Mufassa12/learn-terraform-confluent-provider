@@ -1,0 +1,44 @@
+digraph {
+	compound = "true"
+	newrank = "true"
+	subgraph "root" {
+		"[root] confluent_api_key.admin (expand)" [label = "confluent_api_key.admin", shape = "box"]
+		"[root] confluent_api_key.orders_consumer (expand)" [label = "confluent_api_key.orders_consumer", shape = "box"]
+		"[root] confluent_api_key.orders_producer (expand)" [label = "confluent_api_key.orders_producer", shape = "box"]
+		"[root] confluent_environment.tutorial (expand)" [label = "confluent_environment.tutorial", shape = "box"]
+		"[root] confluent_kafka_cluster.inventory (expand)" [label = "confluent_kafka_cluster.inventory", shape = "box"]
+		"[root] confluent_kafka_topic.orders (expand)" [label = "confluent_kafka_topic.orders", shape = "box"]
+		"[root] confluent_role_binding.admin (expand)" [label = "confluent_role_binding.admin", shape = "box"]
+		"[root] confluent_role_binding.orders_consumer_read_from_topic (expand)" [label = "confluent_role_binding.orders_consumer_read_from_topic", shape = "box"]
+		"[root] confluent_role_binding.orders_producer_write_to_topic (expand)" [label = "confluent_role_binding.orders_producer_write_to_topic", shape = "box"]
+		"[root] confluent_service_account.admin (expand)" [label = "confluent_service_account.admin", shape = "box"]
+		"[root] confluent_service_account.orders_consumer (expand)" [label = "confluent_service_account.orders_consumer", shape = "box"]
+		"[root] confluent_service_account.orders_producer (expand)" [label = "confluent_service_account.orders_producer", shape = "box"]
+		"[root] provider[\"registry.terraform.io/confluentinc/confluent\"]" [label = "provider[\"registry.terraform.io/confluentinc/confluent\"]", shape = "diamond"]
+		"[root] confluent_api_key.admin (expand)" -> "[root] confluent_role_binding.admin (expand)"
+		"[root] confluent_api_key.orders_consumer (expand)" -> "[root] confluent_kafka_cluster.inventory (expand)"
+		"[root] confluent_api_key.orders_consumer (expand)" -> "[root] confluent_service_account.orders_consumer (expand)"
+		"[root] confluent_api_key.orders_producer (expand)" -> "[root] confluent_kafka_cluster.inventory (expand)"
+		"[root] confluent_api_key.orders_producer (expand)" -> "[root] confluent_service_account.orders_producer (expand)"
+		"[root] confluent_environment.tutorial (expand)" -> "[root] provider[\"registry.terraform.io/confluentinc/confluent\"]"
+		"[root] confluent_kafka_cluster.inventory (expand)" -> "[root] confluent_environment.tutorial (expand)"
+		"[root] confluent_kafka_topic.orders (expand)" -> "[root] confluent_api_key.admin (expand)"
+		"[root] confluent_role_binding.admin (expand)" -> "[root] confluent_kafka_cluster.inventory (expand)"
+		"[root] confluent_role_binding.admin (expand)" -> "[root] confluent_service_account.admin (expand)"
+		"[root] confluent_role_binding.orders_consumer_read_from_topic (expand)" -> "[root] confluent_kafka_topic.orders (expand)"
+		"[root] confluent_role_binding.orders_consumer_read_from_topic (expand)" -> "[root] confluent_service_account.orders_consumer (expand)"
+		"[root] confluent_role_binding.orders_producer_write_to_topic (expand)" -> "[root] confluent_kafka_topic.orders (expand)"
+		"[root] confluent_role_binding.orders_producer_write_to_topic (expand)" -> "[root] confluent_service_account.orders_producer (expand)"
+		"[root] confluent_service_account.admin (expand)" -> "[root] provider[\"registry.terraform.io/confluentinc/confluent\"]"
+		"[root] confluent_service_account.orders_consumer (expand)" -> "[root] provider[\"registry.terraform.io/confluentinc/confluent\"]"
+		"[root] confluent_service_account.orders_producer (expand)" -> "[root] provider[\"registry.terraform.io/confluentinc/confluent\"]"
+		"[root] output.inventory_cluster_rest_endpoint (expand)" -> "[root] confluent_kafka_cluster.inventory (expand)"
+		"[root] provider[\"registry.terraform.io/confluentinc/confluent\"] (close)" -> "[root] confluent_api_key.orders_consumer (expand)"
+		"[root] provider[\"registry.terraform.io/confluentinc/confluent\"] (close)" -> "[root] confluent_api_key.orders_producer (expand)"
+		"[root] provider[\"registry.terraform.io/confluentinc/confluent\"] (close)" -> "[root] confluent_role_binding.orders_consumer_read_from_topic (expand)"
+		"[root] provider[\"registry.terraform.io/confluentinc/confluent\"] (close)" -> "[root] confluent_role_binding.orders_producer_write_to_topic (expand)"
+		"[root] root" -> "[root] output.inventory_cluster_rest_endpoint (expand)"
+		"[root] root" -> "[root] provider[\"registry.terraform.io/confluentinc/confluent\"] (close)"
+	}
+}
+
